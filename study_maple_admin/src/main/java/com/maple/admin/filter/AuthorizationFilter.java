@@ -8,31 +8,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import com.maple.admin.config.PrincipalDetails;
-import com.maple.admin.repositroy.MemberRepository;
+import com.maple.admin.util.UserDetailUtil;
 
 public class AuthorizationFilter extends BasicAuthenticationFilter {
 
-	private MemberRepository memberRepository;
+	private UserDetailUtil userDetailUtil;
 	
-	public AuthorizationFilter(AuthenticationManager authenticationManager, MemberRepository memberRepository) {
+	public AuthorizationFilter(AuthenticationManager authenticationManager,UserDetailUtil userDetailUtil) {
 		super(authenticationManager);
-		this.memberRepository = memberRepository;
+		this.userDetailUtil = userDetailUtil;
 	}
 	
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 		
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		if (auth != null) {
-			PrincipalDetails principalDetails = (PrincipalDetails)auth.getPrincipal();
-			request.setAttribute("userInfo", principalDetails.getMember());
+		PrincipalDetails userInfo = userDetailUtil.getPrincipalDetails();
+		if (userInfo != null) {
+			request.setAttribute("userInfo", userInfo.getMember());
 		}
+		
 		chain.doFilter(request, response);
 
 	}

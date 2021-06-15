@@ -1,12 +1,9 @@
 package com.maple.admin.filter;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.Optional;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,11 +14,10 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.auth0.jwt.JWT;
-import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.maple.admin.config.PrincipalDetails;
 import com.maple.admin.entity.Member;
+import com.maple.admin.util.UserDetailUtil;
 
 import lombok.RequiredArgsConstructor;
 
@@ -29,6 +25,8 @@ import lombok.RequiredArgsConstructor;
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 	
 	private final AuthenticationManager authenticationManager;
+	
+	private final UserDetailUtil userDetailUtil;
 	
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
@@ -62,8 +60,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter{
 		PrincipalDetails principalDetails = (PrincipalDetails)authResult.getPrincipal();
 
 		SecurityContextHolder.getContext().setAuthentication(authResult);
-		// member 객체 저장
-		request.setAttribute("userInfo", principalDetails.getMember());
+		
+		userDetailUtil.setPrincipalDetails(principalDetails);
 		
 	}
 	

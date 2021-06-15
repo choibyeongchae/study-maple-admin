@@ -21,14 +21,11 @@
 
     <!-- Custom styles for this template-->
     <link href="/static/css/sb-admin-2.min.css" rel="stylesheet">
-    <!-- Bootstrap core JavaScript-->
-    <script src="/static/vendor/jquery/jquery.min.js"></script>
-    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <link href="/static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <!-- Custom scripts for all pages-->
+    <script src="/static/vendor/jquery/jquery.min.js"></script>
     <script src="/static/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
@@ -38,20 +35,26 @@
     <script src="/static/js/demo/chart-area-demo.js"></script>
     <script src="/static/js/demo/chart-pie-demo.js"></script>
     <script src="/static/js/common.js"></script>
+    <script src="/static/js/demo/datatables-demo.js"></script>
+    <script src="/static/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="/static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/static/vendor/jquery-easing/jquery.easing.min.js"></script>
+
 </head>
 <meta charset="UTF-8">
+<c:set var="userInfo" value="${requestScope.userInfo}" />
 <title>Insert title here</title>
 <script type="text/javascript">
+	var commonjs = new Commonjs();
 	$(function() {
 		var path = location.pathname;
-		var userInfo = '${userInfo}';
-		var commonjs = new Commonjs();
+		var userInfo = '${requestScope.userInfo}';
 		if (commonjs.isEmpty(userInfo)) {
-			if (path != "/member/member_login") {
+			if (path != "/member/member_login" && path != "/member/member_register") {
 				location.href="/member/member_login";
 			}
 		}
-		console.log(userInfo);
 	})
 </script>
 </head>

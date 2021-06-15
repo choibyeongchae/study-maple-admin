@@ -7,6 +7,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import com.maple.admin.util.UserDetailUtil;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 @SpringBootApplication
@@ -22,6 +23,11 @@ public class StudyMapleAdminApplication {
 	@Bean
 	public JPAQueryFactory queryFactory() {
 		return new JPAQueryFactory(em);
+	}
+	
+	@Bean
+	public UserDetailUtil userDetailUtil() {
+		return new UserDetailUtil();
 	}
 
 }

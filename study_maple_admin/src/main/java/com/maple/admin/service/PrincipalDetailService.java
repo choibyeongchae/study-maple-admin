@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.maple.admin.config.PrincipalDetails;
 import com.maple.admin.entity.Member;
 import com.maple.admin.entity.QMember;
-import com.maple.admin.repositroy.MemberRepository;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import lombok.RequiredArgsConstructor;

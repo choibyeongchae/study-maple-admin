@@ -1,6 +1,5 @@
 package com.maple.admin.entity;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +69,7 @@ public class Member extends DateEntityUtil{
 	
 	public List<String> getRoleList() {
 		List<String> roleList = new ArrayList<String>();
-		roleList.add("ROLE_ADMIN");
+		roleList.add("ROLE_USER");
 		return roleList;
 	}
 
