@@ -19,6 +19,11 @@ public class QMember extends EntityPathBase<Member> {
 
     public static final QMember member = new QMember("member1");
 
+    public final com.maple.admin.util.QDateEntityUtil _super = new com.maple.admin.util.QDateEntityUtil(this);
+
+    //inherited
+    public final DateTimePath<java.time.Instant> createDate = _super.createDate;
+
     public final StringPath mbr_adress = createString("mbr_adress");
 
     public final StringPath mbr_born = createString("mbr_born");
@@ -36,6 +41,9 @@ public class QMember extends EntityPathBase<Member> {
     public final StringPath mbr_role = createString("mbr_role");
 
     public final StringPath mbr_zip = createString("mbr_zip");
+
+    //inherited
+    public final DateTimePath<java.time.Instant> updateDate = _super.updateDate;
 
     public QMember(String variable) {
         super(Member.class, forVariable(variable));

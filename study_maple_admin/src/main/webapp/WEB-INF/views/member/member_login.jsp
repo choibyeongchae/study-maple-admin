@@ -6,27 +6,26 @@
 <script type="text/javascript">
 
 function doLogin() {
-var host =  window.location.hostname;
-
-var jsonObj = new Object();
-jsonObj.mbr_email = $("input[name='email']").val();
-jsonObj.mbr_pass = $("input[name='password']").val();
-
-console.log(jsonObj);
-$.ajax({
-	type : "POST",
-	url : "/login",
-	data : JSON.stringify(jsonObj),
-	cache : false,
-	contentType : 'application/json',
-	aync: false,
-	success : function(response,textStatus,request) {
-		location.href="/";
-	},
-	error : function(jqXHR, status, e) {
-		alert("로그인에 실패하였습니다.");
-	}
-});
+	var host =  window.location.hostname;
+	
+	var jsonObj = new Object();
+	jsonObj.mbr_email = $("input[name='email']").val();
+	jsonObj.mbr_pass = $("input[name='password']").val();
+	
+	$.ajax({
+		type : "POST",
+		url : "/login",
+		data : JSON.stringify(jsonObj),
+		cache : false,
+		contentType : 'application/json',
+		aync: false,
+		success : function(response,textStatus,request) {
+			location.href="/";
+		},
+		error : function(jqXHR, status, e) {
+			alert("로그인에 실패하였습니다.");
+		}
+	});
 }
 </script> 
 

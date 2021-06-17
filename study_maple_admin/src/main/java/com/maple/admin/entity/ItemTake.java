@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -40,6 +41,10 @@ public class ItemTake extends DateEntityUtil implements Serializable{
 	private String mbr_email;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name = "mbr_no",insertable = false, updatable = false)
+	@JoinColumns({
+		@JoinColumn(name="caharacter_name",insertable = false, updatable = false),
+		@JoinColumn(name="mbr_no",insertable = false, updatable = false),
+		@JoinColumn(name="mbr_email",insertable = false, updatable = false)
+	})
 	private MemberCharacter memberCharacter;
 }

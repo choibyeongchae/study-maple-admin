@@ -5,7 +5,9 @@
 <html lang="en">
 <jsp:include page="../include/head.jsp"/>
 <script type="text/javascript">
-
+	$(function() {
+		//$("#dataTable_filter").remove();
+	})
 </script>
 <body id="page-top">
 
@@ -27,36 +29,25 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Item List</h1>
+                    <br>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Birth</th>
-                                            <th>Role</th>
-                                            <th>CreateDate</th>
+                                            <th>Event No</th>
+                                            <th>Event name</th>
+                                            <th>Progress status</th>
+                                            <th>Progress Time</th>
+                                            <th>Registration Date</th>
                                         </tr>
                                     </thead>
                                     <tbody id = "tbody">
-                                    	<c:forEach var = "list" items = "${adminMemberList }">
-                                    		<td>${list.mbr_name }</td>
-                                    		<td>${list.mbr_email }</td>
-                                    		<td>${list.mbr_born }</td>
-                                    		<td>${list.mbr_role }</td>
-                                    		<td>${list.createDate }</td>
-                                    	</c:forEach>
+                                    	
                                     </tbody>
                                 </table>
                             </div>

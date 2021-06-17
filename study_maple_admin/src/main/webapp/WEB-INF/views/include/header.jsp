@@ -11,7 +11,7 @@
 function doLogout() {
 	$.ajax({
 		type : "POST",
-		url : "/member/doLogout",
+		url : "/member/core/doLogout",
 		cache : false,
 		contentType : 'application/json',
 		aync: false,

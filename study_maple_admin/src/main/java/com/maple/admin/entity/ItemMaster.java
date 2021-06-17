@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -24,6 +25,7 @@ import lombok.NoArgsConstructor;
 @Table(name="item_master")
 @Builder
 @Data
+@IdClass(ItemMasterKey.class)
 @SequenceGenerator(name = "item_seq", sequenceName = "item_seq", initialValue = 1, allocationSize = 1)
 public class ItemMaster  extends DateEntityUtil implements Serializable{
 	

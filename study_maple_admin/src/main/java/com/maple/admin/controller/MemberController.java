@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import com.maple.admin.dto.MemberDetailDto;
 import com.maple.admin.entity.Member;
 import com.maple.admin.service.MemberService;
 import com.maple.admin.util.SuccessResponse;
@@ -25,8 +25,8 @@ import com.maple.admin.util.UserDetailUtil;
 
 import io.swagger.annotations.ApiOperation;
 
-@Controller
-@RequestMapping("/member/*")
+@RestController
+@RequestMapping("/member/core")
 public class MemberController {
 
 	@Autowired
@@ -34,12 +34,6 @@ public class MemberController {
 	
 	@Autowired
 	private UserDetailUtil userDetailUtil;
-	
-	@ApiOperation("회원가입 화면 매핑")
-	@GetMapping(value = "/member_register")
-	public void member_register(Model model) {
-		
-	}
 	
 	@ApiOperation("회원가입")
 	@PostMapping(value = "/signup")
@@ -52,10 +46,13 @@ public class MemberController {
 		return new SuccessResponse(response.SC_OK, "회원가입 완료", mbr);
 	}
 	
-	@ApiOperation("회원관리화면 매핑")
-	@GetMapping(value = "/siteMember")
-	public void siteMember(Model model) {
+	@ApiOperation("회원리스트 조회")
+	@GetMapping(value = "/siteMemberList")
+	public SuccessResponse getSiteMemberList(HttpServletResponse response) throws Exception {
 		
+		List<Member> list = memberService.getMemberList();
+		
+		return new SuccessResponse(response.SC_OK, "조회성공", list);
 	}
 	
 	@ApiOperation("로그아웃")
@@ -71,15 +68,6 @@ public class MemberController {
 		
 	}
 	
-	@ApiOperation("어드민 관리화면 매핑")
-	@GetMapping(value = "/adminSiteMember")
-	public void adminSiteMember(Model model) throws Exception {
-		List<Member> adminMemberList = memberService.getAdminMemberList();
-		
-		model.addAttribute("adminMemberList", adminMemberList);
-		
-	}
-	
 	@ApiOperation("어드민 회원 리스트 조회")
 	@GetMapping(value = "/adminMemberList")
 	@ResponseBody
@@ -92,8 +80,10 @@ public class MemberController {
 	
 	@ApiOperation("회원 관리 : 회원상세")
 	@GetMapping(value = "/siteMemberDetail")
-	public void siteMemberDetail(@RequestParam Integer mbrno) {
+	public SuccessResponse siteMemberDetail(@RequestParam("mbrno") Integer mbrno,HttpServletResponse response) throws Exception{
+		List<MemberDetailDto> memberDetailList = memberService.getMemberDetail(mbrno);
 		
+		return new SuccessResponse(response.SC_OK, "조회성공", memberDetailList);
 	}
 	
 }

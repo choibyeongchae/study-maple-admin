@@ -71,7 +71,7 @@
 		
 		$.ajax({
 			type : "POST",
-			url : "/member/signup",
+			url : "/member/core/signup",
 			data : JSON.stringify(jsonObj),
 			//data : $(".user").serialize(),
 			cache : false,
