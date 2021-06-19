@@ -17,6 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
@@ -25,6 +26,7 @@ import lombok.NoArgsConstructor;
 @Table(name="member_information")
 @Builder
 @Data
+@EqualsAndHashCode(callSuper=true)
 @SequenceGenerator(name = "member_seq", sequenceName = "member_seq", initialValue = 1, allocationSize = 1)
 public class Member extends DateEntityUtil{
 

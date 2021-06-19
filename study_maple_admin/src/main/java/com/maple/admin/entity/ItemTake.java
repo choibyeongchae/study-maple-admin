@@ -17,6 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
@@ -25,6 +26,7 @@ import lombok.NoArgsConstructor;
 @Table(name="item_take")
 @Builder
 @Data
+@EqualsAndHashCode(callSuper=true)
 public class ItemTake extends DateEntityUtil implements Serializable{
 
 	@Id

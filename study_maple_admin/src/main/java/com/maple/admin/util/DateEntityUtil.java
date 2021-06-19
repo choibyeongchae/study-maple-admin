@@ -7,10 +7,16 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.MappedSuperclass;
 
+import com.maple.admin.entity.BoardComents;
+
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 @MappedSuperclass
-@Data
+@Getter
+@Setter
 public class DateEntityUtil {
 	
 	@Column(name = "regdate")

@@ -20,6 +20,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
@@ -28,6 +29,7 @@ import lombok.NoArgsConstructor;
 @Table(name="main_board")
 @Builder
 @Data
+@EqualsAndHashCode(callSuper=true)
 @SequenceGenerator(name = "boader_seq", sequenceName = "boader_seq", initialValue = 1, allocationSize = 1)
 public class MainBoard extends DateEntityUtil implements Serializable{
 

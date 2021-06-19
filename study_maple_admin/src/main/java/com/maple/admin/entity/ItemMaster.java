@@ -17,6 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
@@ -25,6 +26,7 @@ import lombok.NoArgsConstructor;
 @Table(name="item_master")
 @Builder
 @Data
+@EqualsAndHashCode(callSuper=true)
 @IdClass(ItemMasterKey.class)
 @SequenceGenerator(name = "item_seq", sequenceName = "item_seq", initialValue = 1, allocationSize = 1)
 public class ItemMaster  extends DateEntityUtil implements Serializable{

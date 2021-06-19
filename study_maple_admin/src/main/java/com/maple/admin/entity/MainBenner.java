@@ -16,6 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
@@ -24,6 +25,7 @@ import lombok.NoArgsConstructor;
 @Table(name="main_benner")
 @Builder
 @Data
+@EqualsAndHashCode(callSuper=true)
 @SequenceGenerator(name = "benner_seq", sequenceName = "benner_seq", initialValue = 1, allocationSize = 1)
 public class MainBenner extends DateEntityUtil implements Serializable{
 
