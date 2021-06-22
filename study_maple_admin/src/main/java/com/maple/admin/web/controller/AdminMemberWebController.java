@@ -33,7 +33,11 @@ public class AdminMemberWebController {
 	
 	@ApiOperation("회원관리화면 매핑")
 	@GetMapping(value = "/siteMember")
-	public String siteMember(Model model) {
+	public String siteMember(Model model) throws Exception {
+		List<Member> memberList = memberService.getMemberList();
+		
+		model.addAttribute("memberList",memberList);
+		
 		return "member/siteMember";
 	}
 	

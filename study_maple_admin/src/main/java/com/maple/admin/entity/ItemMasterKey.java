@@ -3,6 +3,11 @@ package com.maple.admin.entity;
 import java.io.Serializable;
 import java.util.Objects;
 
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+
+@Data
+@RequiredArgsConstructor
 public class ItemMasterKey implements Serializable{
 
 	private Integer item_seq;

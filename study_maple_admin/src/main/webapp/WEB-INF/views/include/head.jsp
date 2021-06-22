@@ -52,7 +52,7 @@
 	var commonjs = new Commonjs();
 	$(function() {
 		var path = location.pathname;
-		var userInfo = '${requestScope.userInfo}';
+		var userInfo = '${userInfo}';
 		if (commonjs.isEmpty(userInfo)) {
 			if (path != "/member/member_login" && path != "/member/member_register") {
 				location.href="/member/member_login";

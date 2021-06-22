@@ -39,20 +39,33 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Event No</th>
-                                            <th>Event name</th>
-                                            <th>Progress status</th>
-                                            <th>Progress Time</th>
-                                            <th>Registration Date</th>
+                                        	<th>Item No</th>
+                                            <th>Item Type</th>
+                                            <th>Item name</th>
+                                            <th>Item Desc</th>
+                                            <th>Item_Ficat</th>
+                                            <th>createDate</th>
                                         </tr>
                                     </thead>
                                     <tbody id = "tbody">
-                                    	
+                                    	<c:forEach var = "list" items = "${itemList }">
+                                    		<tr>
+                                    		<td><a href = '/item/detail?seq=${list.item_seq }'>${list.item_seq }</a></td>
+                                    		<td>${list.item_type }</td>
+                                    		<td>${list.item_name }</td>
+                                    		<td>${list.item_desc }</td>
+                                    		<td>${list.item_ficat }</td>
+                                    		<td>${list.createDate }</td>
+                                    		</tr>
+                                    	</c:forEach>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
+                    <a href="/item/detail" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        Create Item
+                    </a>
 
                 </div>
                 <!-- /.container-fluid -->

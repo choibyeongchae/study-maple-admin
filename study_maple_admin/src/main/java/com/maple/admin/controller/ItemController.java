@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.maple.admin.dto.ItemSaveDto;
 import com.maple.admin.entity.ItemMaster;
 import com.maple.admin.service.ItemService;
 import com.maple.admin.util.SuccessResponse;
@@ -29,22 +31,33 @@ public class ItemController {
 	@ApiOperation("아이템 생성")
 	@PostMapping("/saveItem")
 	@Transactional(readOnly = false)
-	public SuccessResponse saveItem(@RequestBody Map<String, Object> saveMap, HttpServletResponse response) throws Exception {
+	@ResponseBody
+	public SuccessResponse saveItem(ItemSaveDto save, HttpServletResponse response) throws Exception {
 		
-		ItemMaster itemMaster = itemService.saveItem(saveMap);
+		ItemMaster itemMaster = itemService.saveItem(save);
 		
 		return new SuccessResponse(response.SC_OK, "정상적으로 등록되었습니다.", itemMaster);
+	}
+	
+	@ApiOperation("아이템 수정")
+	@PostMapping("/updateItem")
+	@Transactional(readOnly = false)
+	@ResponseBody
+	public SuccessResponse updateItem(ItemSaveDto save, HttpServletResponse response) throws Exception {
+		
+		itemService.updateItem(save);
+		
+		return new SuccessResponse(response.SC_OK, "정상적으로 등록되었습니다.", null);
 	}
 	
 	@ApiOperation("아이템 상세")
 	@GetMapping("/itemDetail")
 	@Transactional(readOnly = true)
-	public SuccessResponse getItem(@RequestParam("item_seq") Integer item_seq, HttpServletResponse response) throws Exception {
+	public SuccessResponse getItem(@RequestParam("itemseq") Integer item_seq, HttpServletResponse response) throws Exception {
 		
 		ItemMaster itemDetail = itemService.getItemDetail(item_seq);
 		
 		return new SuccessResponse(response.SC_OK, "조회 성공", itemDetail);
 	}
-	
 	
 }

@@ -11,6 +11,8 @@ import javax.persistence.IdClass;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.DynamicInsert;
+
 import com.maple.admin.util.DateEntityUtil;
 
 import io.swagger.annotations.ApiModelProperty;
@@ -28,6 +30,7 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper=true)
 @IdClass(ItemMasterKey.class)
+@DynamicInsert
 @SequenceGenerator(name = "item_seq", sequenceName = "item_seq", initialValue = 1, allocationSize = 1)
 public class ItemMaster  extends DateEntityUtil implements Serializable{
 	
@@ -38,7 +41,6 @@ public class ItemMaster  extends DateEntityUtil implements Serializable{
 	private Integer item_seq;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "item_type")
 	@ApiModelProperty(value = "아이템 구분")
 	@Column(name="item_type")
 	private String item_type;

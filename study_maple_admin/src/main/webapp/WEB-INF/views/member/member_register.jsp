@@ -6,6 +6,12 @@
 
 <script type="text/javascript">
 
+$(function() {
+	if (!commonjs.isEmpty('${userInfo}')) {
+		location.href="/";
+	}
+})
+
 	function signup() {
 		var jsonObj = new Object();
 		jsonObj.username = $("input[name='username']").val();

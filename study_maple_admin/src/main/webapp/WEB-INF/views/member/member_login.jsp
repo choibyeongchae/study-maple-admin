@@ -5,6 +5,12 @@
 <jsp:include page="../include/head.jsp"/>
 <script type="text/javascript">
 
+$(function() {
+	if (!commonjs.isEmpty('${userInfo}')) {
+		location.href="/";
+	}
+})
+
 function doLogin() {
 	var host =  window.location.hostname;
 	
