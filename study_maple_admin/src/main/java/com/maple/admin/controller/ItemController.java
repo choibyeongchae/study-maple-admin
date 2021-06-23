@@ -53,6 +53,7 @@ public class ItemController {
 	@ApiOperation("아이템 상세")
 	@GetMapping("/itemDetail")
 	@Transactional(readOnly = true)
+	@ResponseBody
 	public SuccessResponse getItem(@RequestParam("itemseq") Integer item_seq, HttpServletResponse response) throws Exception {
 		
 		ItemMaster itemDetail = itemService.getItemDetail(item_seq);

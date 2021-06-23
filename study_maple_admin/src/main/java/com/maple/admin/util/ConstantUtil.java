@@ -6,4 +6,6 @@ public class ConstantUtil {
 
     final static public String ACCESS_TOKEN_NAME = "accessToken";
     final static public String REFRESH_TOKEN_NAME = "refreshToken";
+    
+    public final static String BOARD_NOTICE = "notice";
 }

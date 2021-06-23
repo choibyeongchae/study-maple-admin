@@ -60,7 +60,7 @@ var itemseq = '${param.seq}';
 				}
 			},
 			error : function(e) {
-				alert("로그인에 실패하였습니다.");
+				alert("데이터 조회에 실패하였습니다.");
 			}
 		});
 	}

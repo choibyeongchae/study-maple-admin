@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -50,7 +51,11 @@ public class BoardIke extends DateEntityUtil implements Serializable{
 	@Column(name="mbr_email")
 	private String mbr_email;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="boader_seq",insertable = false, updatable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumns({
+		@JoinColumn(name="boader_seq",insertable = false, updatable = false),
+		@JoinColumn(name="mbr_no",insertable = false, updatable = false),
+		@JoinColumn(name="mbr_email",insertable = false, updatable = false)
+	})
 	private MainBoard mainBoard;
 }
