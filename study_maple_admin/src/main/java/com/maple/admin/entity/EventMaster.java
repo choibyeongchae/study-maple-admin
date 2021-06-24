@@ -1,7 +1,6 @@
 package com.maple.admin.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.DynamicInsert;
 
 import com.maple.admin.util.DateEntityUtil;
 
@@ -26,6 +27,7 @@ import lombok.NoArgsConstructor;
 @Table(name="event_master")
 @Builder
 @Data
+@DynamicInsert
 @EqualsAndHashCode(callSuper=true)
 @SequenceGenerator(name = "even_op", sequenceName = "even_op", initialValue = 1, allocationSize = 1)
 public class EventMaster extends DateEntityUtil implements Serializable{
@@ -46,27 +48,19 @@ public class EventMaster extends DateEntityUtil implements Serializable{
 	
 	@ApiModelProperty(value = "이벤트 시작기간")
 	@Column(name="even_stardate")
-	private Date even_stardate;
+	private String even_stardate;
 	
 	@ApiModelProperty(value = "이벤트 종료기간")
 	@Column(name="even_enddate")
-	private Date even_enddate;
-	
-	@ApiModelProperty(value = "이벤트 타이틀")
-	@Column(name="even_title")
-	private String even_title;
+	private String even_enddate;
 	
 	@ApiModelProperty(value = "이벤트 내용")
 	@Column(name="even_contents")
 	private String even_contents;
 	
-	@ApiModelProperty(value = "이벤트 댓글")
-	@Column(name="even_coment")
-	private String even_coment;
-	
 	@ApiModelProperty(value = "이벤트 조회수")
 	@Column(name="even_viewcnt")
-	private String even_viewcnt;
+	private Integer even_viewcnt;
 	
  
 }

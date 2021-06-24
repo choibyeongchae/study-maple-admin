@@ -13,13 +13,13 @@ public class AdminMainBannerWebController {
 
 	@ApiOperation("메인배너 리스트 화면매핑")
 	@GetMapping(value = "/list")
-	public void bannerList(Model model) {
-		
+	public String bannerList(Model model) {
+		return "/banner/list";
 	}
 	
 	@ApiOperation("메인배너 상세 화면매핑")
 	@GetMapping(value = "/detail")
-	public void bannerDetail(Model model) {
-		
+	public String bannerDetail(Model model) {
+		return "/banner/detail";
 	}
 }

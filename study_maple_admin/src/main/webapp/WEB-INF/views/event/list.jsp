@@ -44,16 +44,38 @@
                                             <th>Progress status</th>
                                             <th>Progress Time</th>
                                             <th>Registration Date</th>
+                                            <th>Create Date</th>
                                         </tr>
                                     </thead>
                                     <tbody id = "tbody">
-                                    	
+                                    	<c:forEach var = "list" items = "${eventList }">
+                                    		<tr>
+                                    		<td><a href = '/event/detail?seq=${list.even_op }'>${list.even_op }</a></td>
+                                    		<td>${list.even_name }</td>
+                                    		<c:choose>
+                                    			<c:when test="${list.even_code eq 'EV0101'}">
+                                    				<td>Wating</td>
+                                    			</c:when>
+                                    			<c:when test="${list.even_code eq 'EV0102'}">
+                                    				<td>ongoing</td>
+                                    			</c:when>
+                                    			<c:when test="${list.even_code eq 'EV0103'}">
+                                    				<td>end</td>
+                                    			</c:when>
+                                    		</c:choose>
+                                    		<td>${list.even_stardate }</td>
+                                    		<td>${list.even_enddate }</td>
+                                    		<td>${list.createDate }</td>
+                                    		</tr>
+                                    	</c:forEach>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-
+					<a href="/event/detail" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                        Create Event
+                    </a>
                 </div>
                 <!-- /.container-fluid -->
 
