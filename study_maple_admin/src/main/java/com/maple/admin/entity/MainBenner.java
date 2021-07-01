@@ -39,6 +39,10 @@ public class MainBenner extends DateEntityUtil implements Serializable{
 	@Column(name="benner_image")
 	private String benner_image;
 	
+	@ApiModelProperty(value = "메인배너 이미지명")
+	@Column(name = "benner_imagenm")
+	private String benner_imagenm;
+	
 	@ApiModelProperty(value = "메인베너 타이틀")
 	@Column(name="benner_title")
 	private String benner_title;
