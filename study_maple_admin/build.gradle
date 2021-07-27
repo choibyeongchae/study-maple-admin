@@ -6,7 +6,6 @@ plugins {
 }
 
 group = 'com.study.maple'
-version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
@@ -18,6 +17,7 @@ def generated = "src/main/generated"
 
 dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.16'
+    compile('org.springframework.boot:spring-boot-starter-batch')
 	compile('org.apache.tomcat.embed:tomcat-embed-jasper')
 	compile('javax.servlet:jstl:1.2')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -35,6 +35,7 @@ dependencies {
     implementation 'org.projectlombok:lombok'
     implementation group: 'com.auth0', name: 'java-jwt', version: '3.10.0'
     implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'commons-io:commons-io:2.6'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     annotationProcessor(
             "com.querydsl:querydsl-apt:${queryDSLVersion}:jpa",
