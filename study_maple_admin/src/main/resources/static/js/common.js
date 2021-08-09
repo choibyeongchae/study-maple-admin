@@ -26,4 +26,9 @@ class Commonjs {
 		}
 		
 	}
+	
+	goPaging = (pageNum,pageBlock,url,totalPages,element,className) => {
+		
+	}
+	
 }
